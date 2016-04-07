@@ -4,13 +4,13 @@
 {% for stream in stream_data %}
   {% if stream.type == 'tweet' %}
     <li>
-      <h4>Tweet</h4>
+      <h4>{{ stream.time }} Tweet</h4>
       {{ stream.text }}
     </li>
   {% endif %}
   {% if stream.type == 'photo' %}
     <li>
-      <h4>Image</h4>
+      <h4>{{ stream.time }} Image</h4>
       <img src='{{ stream.img_href }}'>
     </li>
   {% endif %}

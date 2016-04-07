@@ -13,11 +13,17 @@ def show_stream(request):
 
         # handle tweets
         if(stream.tweet_item != None and stream.tweet_item.deleted == False):
-            current_stream.append({'type': 'tweet', 'text': stream.tweet_item.text})
+            current_stream.append({
+                'type': 'tweet',
+                'text': stream.tweet_item.text,
+                'time': str(stream.created_at)})
 
         # handle photos
         elif(stream.photo_item != None and stream.photo_item.deleted == False):
-            current_stream.append({'type': 'photo', 'img_href': stream.photo_item.image.url})
+            current_stream.append({
+                'type': 'photo',
+                'img_href': stream.photo_item.image.url,
+                'time': str(stream.created_at)})
 
     # render HTML from template
     obj = render(request, './stream.html', {'stream_data': current_stream})
