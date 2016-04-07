@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class ItemAbstract(models.Model):
     user = models.ForeignKey(User)
     created_at = models.DateTimeField()
+    deleted = models.BooleanField(default=False)
 
     class Meta:
         abstract = True
@@ -12,9 +13,7 @@ class ItemAbstract(models.Model):
 
 class PhotoItem(ItemAbstract):
     image = models.ImageField()
-    deleted = models.BooleanField(default=False)
 
 
 class TweetItem(ItemAbstract):
     text = models.CharField(max_length=150)
-    deleted = models.BooleanField(default=False)
