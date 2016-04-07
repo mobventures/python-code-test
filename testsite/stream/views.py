@@ -1,5 +1,6 @@
 from django.shortcuts import get_list_or_404, render
 from stream.models import Stream
+from django.conf import settings
 
 # Create your views here.
 def show_stream(request):
@@ -9,14 +10,15 @@ def show_stream(request):
     print 'stream_data', stream_list
 
     for stream in stream_list:
+
+        # handle tweets
         if(stream.tweet_item != None and stream.tweet_item.deleted == False):
-            print stream.tweet_item.text
-            print stream.tweet_item.deleted
-            print type(stream.tweet_item)
             current_stream.append({'type': 'tweet', 'text': stream.tweet_item.text})
 
+        # handle photos
         elif(stream.photo_item != None and stream.photo_item.deleted == False):
-            current_stream.append({'type': 'photo', 'image': stream.photo_item.image})
+            current_stream.append({'type': 'photo', 'img_href': stream.photo_item.image.url})
 
+    # render HTML from template
     obj = render(request, './stream.html', {'stream_data': current_stream})
     return obj

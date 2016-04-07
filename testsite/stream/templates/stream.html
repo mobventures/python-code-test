@@ -11,7 +11,7 @@
   {% if stream.type == 'photo' %}
     <li>
       <h4>Image</h4>
-      <img src='{{ stream.image.url }}'>
+      <img src='{{ stream.img_href }}'>
     </li>
   {% endif %}
 {% endfor %}
