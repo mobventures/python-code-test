@@ -22,6 +22,8 @@ SECRET_KEY = '!4oojc^tmd%+*c_^(n)7^p^6-0f8td(_o&(2bj*e7demr&jtvy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+MEDIA_URL = '/images/'
+
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
